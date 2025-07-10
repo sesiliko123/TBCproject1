@@ -1,0 +1,56 @@
+<footer class="pt-5 pb-0 mt-5 border-top" style="background-color: #E5EFFF;">
+  <div class="container">
+    <div class="row">
+
+      <!-- Column 1: Info + Logo -->
+      <div class="col-md-3 mb-4">
+        <a class="d-flex align-items-center mb-2 text-decoration-none">
+          <img src="{{ url_for('static', filename='images/ლოგო.png') }}" height="60" class="me-2">
+          <h5 class="mb-0 text-dark">TechShop</h5>
+        </a>
+        <p class="text-muted small">📍 თბილისი, რუსთაველის გამზირი 15</p>
+        <p class="text-muted small">🕐 ორშ – პარ: 10:00 – 20:00<br>შაბ – კვ: 11:00 – 18:00</p>
+      </div>
+
+      <!-- Column 2: Categories -->
+      <div class="col-md-3 mb-4">
+        <h6 class="text-uppercase fw-bold mb-3">კატეგორიები</h6>
+        <ul class="list-unstyled">
+          <li>📱<a href="{{ url_for('products_by_category', category_name='მობილური') }}" class="text-muted text-decoration-none">მობილური</a></li>
+          <li>📲<a href="{{ url_for('products_by_category', category_name='ტაბი') }}" class="text-muted text-decoration-none">ტაბი</a></li>
+          <li>💻<a href="{{ url_for('products_by_category', category_name='ლეპტოპი') }}" class="text-muted text-decoration-none">ლეპტოპი</a></li>
+          <li>📺<a href="{{ url_for('products_by_category', category_name='ტელევიზორი') }}" class="text-muted text-decoration-none">ტელევიზორი</a></li>
+          <li>🖥️<a href="{{ url_for('products_by_category', category_name='მონიტორი') }}" class="text-muted text-decoration-none">მონიტორი</a></li>
+          <li>🎮<a href="{{ url_for('products_by_category', category_name='კონსოლი') }}" class="text-muted text-decoration-none">კონსოლი</a></li>
+          <li>🎧<a href="{{ url_for('products_by_category', category_name='ყურსასმენი') }}" class="text-muted text-decoration-none">ყურსასმენი</a></li>
+          <li>⌚ <a href="{{ url_for('products_by_category', category_name='სმარტ საათი') }}" class="text-muted text-decoration-none">სმარტ საათი</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Account -->
+      <div class="col-md-3 mb-4">
+        <h6 class="text-uppercase fw-bold mb-3">👤 ანგარიში</h6>
+        <ul class="list-unstyled">
+          <li>🙍 <a href="{{ url_for('profile') }}" class="text-muted text-decoration-none">ჩემი ანგარიში</a></li>
+          <li>🛒 <a href="{{ url_for('cart') }}" class="text-muted text-decoration-none">კალათა</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Useful Links -->
+      <div class="col-md-3 mb-4">
+        <h6 class="text-uppercase fw-bold mb-3">🔗 გამოსადეგი ბმულები</h6>
+        <ul class="list-unstyled">
+          <li>📬 <a href="{{ url_for('contact') }}" class="text-muted text-decoration-none">კონტაქტი</a></li>
+          <li>ℹ️ <a href="{{ url_for('about') }}" class="text-muted text-decoration-none">ჩვენ შესახებ</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom dark bar -->
+  <div class="bg-dark text-white text-center py-3 mt-3">
+    <small>© 2025 TechShop — ყველა უფლება დაცულია</small>
+  </div>
+</footer>
+

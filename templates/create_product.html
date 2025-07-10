@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %}პროდუქტის დამატება{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">პროდუქტის დამატება - {{ selected_category }}</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">{{ form.name.label }} {{ form.name(class="form-control") }}</div>
+        <div class="mb-3">{{ form.price.label }} {{ form.price(class="form-control") }}</div>
+        <div class="mb-3">{{ form.image.label }} {{ form.image(class="form-control") }}</div>
+
+        {# მობილური #}
+        {% if selected_category == "მობილური" %}
+            {{ form.screen_size.label }} {{ form.screen_size(class="form-control") }}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control") }}
+            {{ form.refresh_rate.label }} {{ form.refresh_rate(class="form-control") }}
+            {{ form.screen_type.label }} {{ form.screen_type(class="form-control") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control") }}
+            {{ form.bluetooth.label }} {{ form.bluetooth(class="form-control") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control") }}
+            {{ form.battery.label }} {{ form.battery(class="form-control") }}
+        {% elif selected_category == "ტაბი" %}
+            {{ form.screen_size.label }} {{ form.screen_size(class="form-control") }}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control") }}
+            {{ form.screen_type.label }} {{ form.screen_type(class="form-control") }}
+            {{ form.refresh_rate.label }} {{ form.refresh_rate(class="form-control") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control") }}
+            {{ form.charging_time.label }} {{ form.charging_time(class="form-control") }}
+            {{ form.bluetooth.label }} {{ form.bluetooth(class="form-control") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control") }}
+            {{ form.battery.label }} {{ form.battery(class="form-control") }}
+        {% elif selected_category == "ლეპტოპი" %}
+            {{ form.screen_size.label }} {{ form.screen_size(class="form-control") }}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control") }}
+            {{ form.screen_type.label }} {{ form.screen_type(class="form-control") }}
+            {{ form.refresh_rate.label }} {{ form.refresh_rate(class="form-control") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control") }}
+            {{ form.bluetooth.label }} {{ form.bluetooth(class="form-control") }}
+            {{ form.type_c.label }} {{ form.type_c(class="form-control") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control") }}
+        {% elif selected_category == "ტელევიზორი" %}
+            {{ form.screen_type.label }} {{ form.screen_type(class="form-control") }}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control") }}
+        {% elif selected_category == "მონიტორი" %}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control") }}
+            {{ form.screen_size.label }} {{ form.screen_size(class="form-control") }}
+            {{ form.viewing_angle.label }} {{ form.viewing_angle(class="form-control") }}
+            {{ form.refresh_rate.label }} {{ form.refresh_rate(class="form-control") }}
+        {% elif selected_category == "კონსოლი" %}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control") }}
+            {{ form.work_time.label }} {{ form.work_time(class="form-control") }}
+            {{ form.processor.label }} {{ form.processor(class="form-control") }}
+            {{ form.cores.label }} {{ form.cores(class="form-control") }}
+            {{ form.frequency.label }} {{ form.frequency(class="form-control") }}
+            {{ form.refresh_rate.label }} {{ form.refresh_rate(class="form-control") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control") }}
+            {{ form.charging_time.label }} {{ form.charging_time(class="form-control") }}
+            {{ form.type_c.label }} {{ form.type_c(class="form-control") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control") }}
+        {% elif selected_category == "ყურსასმენი" %}
+            <div class="form-check mb-2">
+                {{ form.noise_cancellation(class="form-check-input") }}
+                {{ form.noise_cancellation.label(class="form-check-label") }}
+            </div>
+            {{ form.battery.label }} {{ form.battery(class="form-control") }}
+            {{ form.charging_time.label }} {{ form.charging_time(class="form-control") }}
+            {{ form.bluetooth.label }} {{ form.bluetooth(class="form-control") }}
+        {% elif selected_category == "სმარტ საათი" %}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control") }}
+            {{ form.screen_size.label }} {{ form.screen_size(class="form-control") }}
+            {{ form.work_time.label }} {{ form.work_time(class="form-control") }}
+            {{ form.screen_type.label }} {{ form.screen_type(class="form-control") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control") }}
+            {{ form.bluetooth.label }} {{ form.bluetooth(class="form-control") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control") }}
+            {{ form.battery.label }} {{ form.battery(class="form-control") }}
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary mt-3">{{ form.submit.label.text }}</button>
+    </form>
+</div>
+<div class="text-end">
+
+</div>
+
+{% endblock %}

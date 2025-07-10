@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">🛒 ჩემი კალათა</h2>
+
+    {% if cart_items %}
+        <div class="row">
+            {% for item in cart_items %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ url_for('static', filename='images/' ~ item.product.image) }}" class="img-fluid rounded-start" alt="{{ item.product.name }}">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.product.name }}</h5>
+                                <p class="card-text">ფასი: {{ item.product.price }} ₾</p>
+                                <p class="card-text">რაოდენობა: {{ item.quantity }}</p>
+                                <div class="btn-group">
+                                    <a href="{{ url_for('increase_quantity', item_id=item.id) }}" class="btn btn-sm btn-success">➕</a>
+                                    <a href="{{ url_for('decrease_quantity', item_id=item.id) }}" class="btn btn-sm btn-warning">➖</a>
+                                    <a href="{{ url_for('remove_from_cart', product_id=item.product.id) }}" class="btn btn-sm btn-danger">წაშლა</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-end mt-4">
+            <h4>ჯამი: {{ total }} ₾</h4>
+            <a href="{{ url_for('checkout') }}" class="btn btn-primary btn-lg mt-2">💳 გადახდა</a>
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center">
+            🛒 თქვენი კალათა ცარიელია.
+        </div>
+    {% endif %}
+    <div class="mt-4">
+      <a href="{{ url_for('home') }}" class="btn btn-secondary">
+        ⬅ უკან მთავარ გვერდზე
+      </a>
+    </div>
+</div>
+{% endblock %}

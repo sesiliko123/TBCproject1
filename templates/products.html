@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="{{ url_for('static', filename='images/' ~ (product.image or 'default_product.png')) }}" class="img-fluid rounded" alt="{{ product.name }}">
+        </div>
+        <div class="col-md-7">
+            <h2>{{ product.name }}</h2>
+            <h4 class="text-primary">{{ product.price }} ₾</h4>
+            <p><strong>კატეგორია:</strong> {{ product.category }}</p>
+
+            {% if product.category != 'ყურსასმენი' %}
+                <ul class="list-unstyled">
+                    <li><strong>მეხსიერება:</strong> {{ product.storage or 'აღარ არის' }}</li>
+                    <li><strong>RAM:</strong> {{ product.ram or 'აღარ არის' }}</li>
+                    <li><strong>ეკრანის ზომა:</strong> {{ product.screen_size or 'აღარ არის' }}</li>
+                    <li><strong>გარჩევადობა:</strong> {{ product.resolution or 'აღარ არის' }}</li>
+                    <li><strong>განახლების სიხშირე:</strong> {{ product.refresh_rate or 'აღარ არის' }}</li>
+                    <li><strong>ეკრანის ტიპი:</strong> {{ product.screen_type or 'აღარ არის' }}</li>
+                    <li><strong>ბატარეა:</strong> {{ product.battery or 'აღარ არის' }}</li>
+                </ul>
+            {% else %}
+                <ul class="list-unstyled">
+                    <li><strong>Bluetooth:</strong> {{ product.bluetooth or 'აღარ არის' }}</li>
+                    <li><strong>ხმის დახშობა:</strong> {{ 'კი' if product.noise_cancellation else 'არა' }}</li>
+                    <li><strong>ელემენტის ხანგრძლივობა:</strong> {{ product.battery_life or 'აღარ არის' }}</li>
+                    <li><strong>დამუხტვის დრო:</strong> {{ product.charging_time or 'აღარ არის' }}</li>
+                </ul>
+            {% endif %}
+
+            <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-success mt-3">🛒 დამატება კალათაში</a>
+            <a href="{{ url_for('home') }}" class="btn btn-secondary mt-3 ms-2">უკან მთავარ გვერდზე</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

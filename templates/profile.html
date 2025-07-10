@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}პროფილი - {{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body text-center">
+
+                    <!-- Profile Image -->
+                    <div class="mb-4">
+                        {% if user.profile_image %}
+                            <img src="{{ url_for('static', filename='images/' ~ user.profile_image) }}" alt="Profile Image" class="rounded-circle" style="width:150px; height:150px; object-fit:cover; border: 3px solid #0d6efd;">
+                        {% else %}
+                            {% if user.gender == 'Male' %}
+                                <img src="{{ url_for('static', filename='images/default_male.png') }}" alt="Default Male" class="rounded-circle" style="width:150px; height:150px; object-fit:cover; border: 3px solid #0d6efd;">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='images/default_female.png') }}" alt="Default Female" class="rounded-circle" style="width:150px; height:150px; object-fit:cover; border: 3px solid #0d6efd;">
+                            {% endif %}
+                        {% endif %}
+                    </div>
+
+                    <!-- User Info -->
+                    <h3 class="card-title mb-1">{{ user.first_name }} {{ user.last_name }}</h3>
+                    <p class="text-muted mb-3">როლი: <span class="badge bg-primary">{{ user.role }}</span></p>
+
+                    <!-- Profile Image Upload Form -->
+                    <form method="POST" enctype="multipart/form-data" class="mb-0">
+                        {{ form.hidden_tag() }}
+                        <div class="mb-3">
+                            {{ form.profile_image.label(class="form-label") }}
+                            {{ form.profile_image(class="form-control") }}
+                            {% for error in form.profile_image.errors %}
+                                <div class="text-danger small">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <button type="submit" class="btn btn-primary">ფოტოს შეცვლა</button>
+                    </form>
+
+                    <!-- Flash Messages -->
+                </div>
+            </div>
+
+            <!-- Order History -->
+            <div class="card mt-5 shadow-sm">
+                <div class="card-body">
+                    <h4 class="mb-3">{{ 'შეკვეთების ისტორია' if lang == 'ka' else 'Order History' }}</h4>
+
+                    {% if orders %}
+                    <div class="table-responsive">
+                        <table class="table table-bordered align-middle text-center shadow-sm">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>{{ 'პროდუქტი' if lang == 'ka' else 'Product' }}</th>
+                                    <th>{{ 'რაოდენობა' if lang == 'ka' else 'Quantity' }}</th>
+                                    <th>{{ 'ფასი' if lang == 'ka' else 'Price' }}</th>
+                                    <th>{{ 'თარიღი' if lang == 'ka' else 'Date' }}</th>
+                                    <th>{{ 'სტატუსი' if lang == 'ka' else 'Status' }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                <tr>
+                                    <td>{{ order.product.name }}</td>
+                                    <td>{{ order.quantity }}</td>
+                                    <td>{{ order.total_price }} ₾</td>
+                                    <td>{{ order.date_ordered.strftime('%Y-%m-%d') }}</td>
+                                    <td><span class="badge bg-success">{{ order.status }}</span></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info" role="alert">
+                        {{ 'შეკვეთები არ მოიძებნა.' if lang == 'ka' else 'No orders found.' }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}კონტაქტი📞{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>დაგვიკავშირდით 📧</h2>
+    <p class="fs-5">გაქვთ შეკითხვა ან პრობლემები? მოგვწერეთ 👇:</p>
+    <ul class="list-unstyled fs-5 mb-4">
+        <li>📧 ელ.ფოსტა: support@techshop.ge</li>
+        <li>📞 ტელეფონი: +995 599 123 456</li>
+        <li>📍 მისამართი: თბილისი, რუსთაველის გამზირი 15</li>
+    </ul>
+
+    <form method="post" action="{{ url_for('contact') }}">
+        <div class="mb-3">
+            <label for="name" class="form-label">🙍 სახელი</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="შეიყვანეთ თქვენი სახელი" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">📧 ელ.ფოსტა</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="შეიყვანეთ თქვენი ელ-ფოსტა" required>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">📝 მესიჯი</label>
+            <textarea class="form-control" id="message" name="message" rows="5" placeholder="შეიყვანეთ თქვენი შეტყობინება" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">📤 გაგზავნა</button>
+    </form>
+    <div class="mt-4">
+      <a href="{{ url_for('home') }}" class="btn btn-secondary">
+        ⬅ უკან მთავარ გვერდზე
+      </a>
+    </div>
+</div>
+{% endblock %}
+

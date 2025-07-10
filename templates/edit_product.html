@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block title %}პროდუქტის რედაქტირება{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">პროდუქტის რედაქტირება - {{ product.category }}</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.name.label }}
+            {{ form.name(class="form-control") }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.price.label }}
+            {{ form.price(class="form-control") }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.image.label }}
+            {{ form.image(class="form-control") }}
+        </div>
+
+        {% if product.category == 'მობილური' %}
+            {{ form.screen_size.label }} {{ form.screen_size(class="form-control mb-3") }}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control mb-3") }}
+            {{ form.refresh_rate.label }} {{ form.refresh_rate(class="form-control mb-3") }}
+            {{ form.screen_type.label }} {{ form.screen_type(class="form-control mb-3") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control mb-3") }}
+            {{ form.bluetooth.label }} {{ form.bluetooth(class="form-control mb-3") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control mb-3") }}
+            {{ form.battery.label }} {{ form.battery(class="form-control mb-3") }}
+        {% elif product.category == 'ტაბი' %}
+            {{ form.screen_size.label }} {{ form.screen_size(class="form-control mb-3") }}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control mb-3") }}
+            {{ form.screen_type.label }} {{ form.screen_type(class="form-control mb-3") }}
+            {{ form.refresh_rate.label }} {{ form.refresh_rate(class="form-control mb-3") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control mb-3") }}
+            {{ form.charging_time.label }} {{ form.charging_time(class="form-control mb-3") }}
+            {{ form.bluetooth.label }} {{ form.bluetooth(class="form-control mb-3") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control mb-3") }}
+            {{ form.battery.label }} {{ form.battery(class="form-control mb-3") }}
+        {% elif product.category == 'ლეპტოპი' %}
+            {{ form.screen_size.label }} {{ form.screen_size(class="form-control mb-3") }}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control mb-3") }}
+            {{ form.screen_type.label }} {{ form.screen_type(class="form-control mb-3") }}
+            {{ form.refresh_rate.label }} {{ form.refresh_rate(class="form-control mb-3") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control mb-3") }}
+            {{ form.bluetooth.label }} {{ form.bluetooth(class="form-control mb-3") }}
+            {{ form.type_c.label }} {{ form.type_c(class="form-control mb-3") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control mb-3") }}
+        {% elif product.category == 'ტელევიზორი' %}
+            {{ form.screen_type.label }} {{ form.screen_type(class="form-control mb-3") }}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control mb-3") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control mb-3") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control mb-3") }}
+        {% elif product.category == 'მონიტორი' %}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control mb-3") }}
+            {{ form.screen_size.label }} {{ form.screen_size(class="form-control mb-3") }}
+            {{ form.viewing_angle.label }} {{ form.viewing_angle(class="form-control mb-3") }}
+            {{ form.refresh_rate.label }} {{ form.refresh_rate(class="form-control mb-3") }}
+        {% elif product.category == 'კონსოლი' %}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control mb-3") }}
+            {{ form.work_time.label }} {{ form.work_time(class="form-control mb-3") }}
+            {{ form.processor.label }} {{ form.processor(class="form-control mb-3") }}
+            {{ form.cores.label }} {{ form.cores(class="form-control mb-3") }}
+            {{ form.frequency.label }} {{ form.frequency(class="form-control mb-3") }}
+            {{ form.refresh_rate.label }} {{ form.refresh_rate(class="form-control mb-3") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control mb-3") }}
+            {{ form.charging_time.label }} {{ form.charging_time(class="form-control mb-3") }}
+            {{ form.type_c.label }} {{ form.type_c(class="form-control mb-3") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control mb-3") }}
+        {% elif product.category == 'ყურსასმენი' %}
+            <div class="form-check mb-3">
+                {{ form.noise_cancellation(class="form-check-input") }}
+                {{ form.noise_cancellation.label(class="form-check-label") }}
+            </div>
+            {{ form.battery_life.label }} {{ form.battery_life(class="form-control mb-3") }}
+            {{ form.charging_time.label }} {{ form.charging_time(class="form-control mb-3") }}
+            {{ form.bluetooth.label }} {{ form.bluetooth(class="form-control mb-3") }}
+        {% elif product.category == 'სმარტ საათი' %}
+            {{ form.resolution.label }} {{ form.resolution(class="form-control mb-3") }}
+            {{ form.screen_size.label }} {{ form.screen_size(class="form-control mb-3") }}
+            {{ form.work_time.label }} {{ form.work_time(class="form-control mb-3") }}
+            {{ form.screen_type.label }} {{ form.screen_type(class="form-control mb-3") }}
+            {{ form.storage.label }} {{ form.storage(class="form-control mb-3") }}
+            {{ form.bluetooth.label }} {{ form.bluetooth(class="form-control mb-3") }}
+            {{ form.ram.label }} {{ form.ram(class="form-control mb-3") }}
+            {{ form.battery.label }} {{ form.battery(class="form-control mb-3") }}
+        {% endif %}
+
+        <button type="submit" class="btn btn-success">{{ form.submit.label.text }}</button>
+    </form>
+</div>
+{% endblock %}  აქ ჩაამატე კატეგორისს არჩევის ღილაკი
